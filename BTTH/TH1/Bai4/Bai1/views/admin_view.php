@@ -17,14 +17,14 @@ $flowers = getFlowers();
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($flowers as $index => $flower): ?>
+            <?php foreach ($flowers as $flower): ?>
                 <tr>
                     <td><?php echo $flower['name']; ?></td>
                     <td><?php echo $flower['description']; ?></td>
                     <td><img src="../<?php echo $flower['image']; ?>" alt="<?php echo $flower['name']; ?>" style="width: 100px;"></td>
                     <td>
-                        <a href="edit.php?action=edit&id=<?php echo $index; ?>" class="btn btn-warning btn-sm">Sửa</a>
-                        <a href="../process.php?action=delete&id=<?php echo $index; ?>" class="btn btn-danger btn-sm">Xóa</a>
+                        <a href="edit.php?id=<?php echo $flower['id']; ?>" class="btn btn-warning btn-sm">Sửa</a>
+                        <a href="../process.php?action=delete&id=<?php echo $flower['id']; ?>" class="btn btn-danger btn-sm">Xóa</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
