@@ -12,7 +12,7 @@
             <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
         </div>
         <div class="mb-3">
-            <label for="image" class="form-label">Hình ảnh (URL)</label>
+            <label for="image" class="form-label">Hình ảnh</label>
             <input type="text" class="form-control" id="image" name="image" required>
         </div>
         <button type="submit" class="btn btn-primary">Thêm</button>
