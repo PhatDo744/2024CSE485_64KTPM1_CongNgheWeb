@@ -1,28 +1,33 @@
 <?php
-$filename = './uploads/questions.txt';
-$questions = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-$answer = [];
-$current_questions = [];
-foreach ($questions as $question) {
-    if (strpos($question, 'ANSWER:') === 0) {
-        $answer[] = trim(substr($question, 8));
-    }
-}
+require_once 'config.php';
+
 $score = 0;
+$total_questions = 0;
+
 foreach ($_POST as $key => $userAnswer) {
-    $questionNumber = (int)filter_var($key, FILTER_SANITIZE_NUMBER_INT);
-    if (isset($answer[$questionNumber - 1]) && $answer[$questionNumber - 1] === $userAnswer) {
-        $score++;
+    // Trích xuất question_number từ tên trường
+    if (preg_match('/^question(\d+)$/', $key, $matches)) {
+        $question_number = $matches[1];
+        $question_id = $question_number; // Giả sử question_number tương ứng với question_id trong cơ sở dữ liệu
+
+        $stmt = $pdo->prepare("SELECT answer FROM questions WHERE id = ?");
+        $stmt->execute([$question_id]);
+        $correctAnswer = $stmt->fetchColumn();
+
+        if ($correctAnswer) {
+            $total_questions++;
+            if (strtoupper($userAnswer) === strtoupper($correctAnswer)) {
+                $score++;
+            }
+        }
     }
 }
-$total_questions = count($answer);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kết quả thi trắc nghiệm</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 </head>
