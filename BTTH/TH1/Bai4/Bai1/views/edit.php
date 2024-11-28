@@ -1,11 +1,15 @@
 <?php
 session_start();
+include '../config.php';
 include '../includes/header.php';
+include '../includes/functions.php';
 
 $id = $_GET['id'] ?? '';
 $flower = [];
-if ($id !== '' && isset($_SESSION['flowers'][$id])) {
-    $flower = $_SESSION['flowers'][$id];
+if ($id !== '') {
+    $stmt = $pdo->prepare("SELECT * FROM flowers WHERE id = :id");
+    $stmt->execute(['id' => $id]);
+    $flower = $stmt->fetch();
 }
 ?>
 <div class="container mt-4">
