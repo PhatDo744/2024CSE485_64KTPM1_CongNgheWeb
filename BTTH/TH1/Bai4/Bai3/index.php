@@ -1,33 +1,10 @@
 <?php
-// Đường dẫn tới file CSV
-$filename =  __DIR__ . '/uploads/KTPM3_Danh_sach_diem_danh.csv';
-if (!file_exists($filename)) {
-    die("File $filename không tồn tại. Vui lòng kiểm tra đường dẫn.");
-}
-$file = fopen($filename, 'r');
-if (!$file) {
-    die("Không thể mở file $filename. Kiểm tra quyền truy cập.");
-}
+include 'config.php';
 
-
-// Mảng chứa dữ liệu sinh viên
 $sinhvien = [];
 
-// Mở file CSV
-if (($handle = fopen($filename, "r")) !== FALSE) {
-    // Đọc dòng đầu tiên (tiêu đề)
-    $headers = fgetcsv($handle, 1000, ",");
-
-    // Đọc từng dòng dữ liệu
-    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-        $sinhvien[] = array_combine($headers, $data);
-    }
-
-    fclose($handle);
-}
-
-// In mảng sinh viên (chỉ để kiểm tra)
-// print_r($sinhvien);
+$stmt = $pdo->query("SELECT username, password, lastname, firstname, city, email, course1 FROM sinhvien");
+$sinhvien = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,7 +36,7 @@ if (($handle = fopen($filename, "r")) !== FALSE) {
                 // Hiển thị từng sinh viên
                 foreach ($sinhvien as $sv) {
                     echo "<tr>";
-                    echo "<td>{$sv['﻿username']}</td>";
+                    echo "<td>{$sv['username']}</td>";
                     echo "<td>{$sv['password']}</td>";
                     echo "<td>{$sv['lastname']}</td>";
                     echo "<td>{$sv['firstname']}</td>";

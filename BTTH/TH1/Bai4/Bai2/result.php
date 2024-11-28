@@ -5,10 +5,10 @@ $score = 0;
 $total_questions = 0;
 
 foreach ($_POST as $key => $userAnswer) {
-    // Trích xuất question_number từ tên trường
+
     if (preg_match('/^question(\d+)$/', $key, $matches)) {
         $question_number = $matches[1];
-        $question_id = $question_number; // Giả sử question_number tương ứng với question_id trong cơ sở dữ liệu
+        $question_id = $question_number;
 
         $stmt = $pdo->prepare("SELECT answer FROM questions WHERE id = ?");
         $stmt->execute([$question_id]);
