@@ -20,7 +20,7 @@ $flowers = getFlowers();
                 <tr>
                     <td><?php echo $flower['name']; ?></td>
                     <td><?php echo $flower['description']; ?></td>
-                    <td><img src="../assets/<?php echo $flower['image']; ?>" alt="<?php echo $flower['name']; ?>" style="width: 100px;"></td>
+                    <td><img src="../assets/images/<?php echo $flower['image']; ?>" alt="<?php echo $flower['name']; ?>" style="width: 100px;"></td>
                     <td>
                         <a href="edit.php?id=<?php echo $flower['id']; ?>" class="btn btn-warning btn-sm">Sửa</a>
                         <a href="../controllers/FlowerController.php?action=delete&id=<?php echo $flower['id']; ?>" class="btn btn-danger btn-sm">Xóa</a>

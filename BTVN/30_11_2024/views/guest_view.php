@@ -9,7 +9,7 @@ $flowers = getFlowers();
         <?php foreach ($flowers as $flower): ?>
             <div class="col-md-4">
                 <div class="card mb-4 h-100">
-                    <img src="../assets/<?php echo $flower['image']; ?>" class="card-img-top img-fluid" alt="<?php echo $flower['name']; ?>" style="max-height: 200px; object-fit: cover;">
+                    <img src="../assets/images/<?php echo $flower['image']; ?>" class="card-img-top img-fluid" alt="<?php echo $flower['name']; ?>" style="max-height: 200px; object-fit: cover;">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title"><?php echo $flower['name']; ?></h5>
                         <p class="card-text flex-grow-1"><?php echo $flower['description']; ?></p>
