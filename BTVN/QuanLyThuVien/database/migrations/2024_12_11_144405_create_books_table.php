@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('author');
             $table->string('publication_year');
             $table->string('genre');
-            $table->string('library_id')->constrained('libraries')->onDelete('cascade');
+            $table->foreignId('library_id')->constrained('libraries')->onDelete('cascade');
             $table->timestamps();
         });
     }

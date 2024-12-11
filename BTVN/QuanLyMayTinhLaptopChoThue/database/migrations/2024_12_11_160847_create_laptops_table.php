@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('model');
             $table->string('specifications');
             $table->boolean('rental_status')->default(false);
-            $table->string('renter_id')->contrained('renters')->onDelete('cascade');
+            $table->foreignId('renter_id')->constrained('renters')->onDelete('cascade');
             $table->timestamps();
         });
     }
