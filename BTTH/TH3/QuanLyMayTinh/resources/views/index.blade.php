@@ -287,39 +287,30 @@ $(document).ready(function(){
 								<label for="selectAll"></label>
 							</span>
 						</th>
-						<th>First_Name</th>
-						<th>Last_Name</th>
-						<th>Date_of_birth</th>
-						<th>Parent_phone</th>
-						<th>Grade_level</th>
-						<th>Room_number</th>
+						<th>computer_id</th>
+						<th>reported_by</th>
+						<th>reported_date</th>
+						<th>description</th>
+						<th>urgency</th>
+						<th>status</th>
+                        <th>computer_name</th>
 					</tr>
 				</thead>
 				<tbody>
-					@foreach($students as $index => $student)
-                    <tr>
-                        <td>
-                            {{$index}}                    
-                        </td>
-						<td>
-                            {{$student->first_name}}                                                                                                                               
-                        </td>
-						<td>
-                            {{$student->last_name}}                                                                                                                               
-                        </td>
-						<td>
-                            {{$student->date_of_birth}}                                                                                                                               
-                        </td>
-						<td>
-                            {{$student->parent_phone}}                                                                                                                               
-                        </td>
-						<td>
-                            {{ $student->classe ? $student->classe->grade_level : 'N/A' }}                                                                                                                               
-                        </td>
-						<td>
-                            {{ $student->classe ? $student->classe->room_number : 'N/A' }}                                                                                                                               
-                        </td>
-					</tr> 
+					@foreach($issues as $index=> $issue)
+                        <tr>
+                            <td>
+                                {{$index}}
+                            </td>
+                            <td>{{$issue->computer_id}}</td>
+                            <td>{{$issue->reported_by}}</td>
+                            <td>{{$issue->reported_date}}</td>
+                            <td>{{$issue->description}}</td>
+                            <td>{{$issue->urgency}}</td>
+                            <td>{{$issue->status}}</td>
+                            <td>{{$issue->computer->computer_name}}</td>
+
+                        </tr>
                     @endforeach
 				</tbody>
 			</table>
