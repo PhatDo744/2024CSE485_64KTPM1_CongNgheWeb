@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class sale extends Model
+class issue extends Model
 {
     use HasFactory;
-    public function medicine()
+
+    // Định nghĩa quan hệ với model Computer
+    public function computer()
     {
         return $this->belongsTo(Computer::class);
     }

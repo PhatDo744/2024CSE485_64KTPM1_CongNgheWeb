@@ -8,6 +8,6 @@ class student extends Model
 {
     public function classe()
     {
-        return $this->belongsTo('App\Models\classe');
+        return $this->belongsTo(classe::class);
     }
 }
