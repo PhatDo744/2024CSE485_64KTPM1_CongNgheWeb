@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class classe extends Model
 {
-    protected $fillable = ['grade_level', 'room_number'];
+    use HasFactory;
 
     public function students()
     {
-        return $this->hasMany(student::class);
+        return $this->hasMany(student::class, 'class_id', 'id');
     }
 }
